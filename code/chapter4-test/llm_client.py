@@ -101,15 +101,11 @@ class HelloAgentsLLM:
         try:
             url = "http://10.96.243.101:443/v1/chat/completions"
 
-            prompt = '写一个快速排序算法'
             json_data = {
                 "model": "system_problem_model",
                 "temperature": 0.5,
                 "max_tokens": 2046,
-                "messages": [
-                    {"role": "system", "content": "You are a helpful assistant that writes Python code."},
-                    {"role": "user", "content": prompt}
-                ]
+                "messages": messages
             }
 
             response = self.__post_with_retry('cnoa', url=url, json=json_data, )
